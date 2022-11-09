@@ -6,7 +6,7 @@ Test program to explore functionality of OpenCV library for possible future usag
 - You will have to toggle between screens to select input or exit in your camera screen, and to type input.
 - Make sure you update your path to be your current active directory where you are running the program (see comments in code).
 
-# Functionalities tested:
+# Functionalities tested
 - Take picture (c)
 - Grayscale (d = on, e = off)
 - Flip 180 deg (f)
