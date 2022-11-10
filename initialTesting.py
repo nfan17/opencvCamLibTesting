@@ -5,7 +5,7 @@ import cv2
 import datetime
 import numpy as np
 
-lastState = np.zeros(3, dtype=bool)
+lastState = np.zeros(3, dtype=bool) #[grayScale, flip, sharpFilter]
 
 cam = cv2.VideoCapture(0)
 
@@ -56,10 +56,6 @@ while True:
         print("Key: clear - clear prev states | c - take pic | d - grayscale = ON | e - grayscale = OFF |\nf - flip 180 | g - sharp filter = ON | h - sharp filter = OFF")
         input = input("Sequence: ")
         comm = input.split(" ")
-        #gScal = lastState[0]
-        #f = lastState[1]
-        #sh = lastState[2]
-        #keepState = True
         while len(comm) > 0:
             next = comm.pop(0)
             if next == "c":
@@ -91,7 +87,6 @@ while True:
             elif next == "clear":
                 lastState = [False, False, False]
         del input
-        #lastState = [gScal, f, sh] if keepState else [False, False, False]
         
 cam.release()
 cv2.destroyAllWindows()
