@@ -5,35 +5,58 @@ import cv2
 import datetime
 import numpy as np
 
+# FUNCTIONS --------------------------------------------------------------------|
+
+def iD(time : datetime) -> int:
+    '''
+    Returns ID for image naming purposes
+    @param current time
+    @return ID (int)
+    '''
+    return int(time.strftime("%m"))*10000000 + int(time.strftime("%d"))*100000 +\
+             int(time.strftime("%H")) * 1000 + int(time.strftime("%M")) * 10
+
+def timeStamp(time : datetime, img : cv2.Mat) -> cv2.Mat:
+    '''
+    Timestamps and returns an existing image
+    @param current time
+    @param path for image (already read using cv2.imread())
+    @return the edited image
+    '''
+    return cv2.putText(img, f"{time}", (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 
+                    0.75, (255, 255, 255), 2, cv2.LINE_AA)
+
+def flip(img : cv2.Mat) -> cv2.Mat:
+    '''
+    Flips and returns existing image 180 degrees
+    @param path for image (already read using cv2.imread())
+    @return the edited image
+    '''
+    return cv2.flip(img, 0)
+
+def gScale(img: cv2.Mat) -> cv2.Mat:
+    '''
+    Converts and returns existing image in grayscale
+    @param path for image (already read using cv2.imread())
+    @return the edited image
+    '''
+    return cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+
+def sharpF(img: cv2.Mat) -> cv2.Mat:
+    '''
+    Adds and returns existing image with 'sharpen' filter applied
+    @param path for image (already read using cv2.imread())
+    @return the edited image
+    '''
+    kernel = np.array([[-1, -1, -1], [-1, 9.5, -1], [-1, -1, -1]])
+    return cv2.filter2D(img, -1, kernel)
+
+# MAIN PROGRAM ----------------------------------------------------------------|
 lastState = np.zeros(3, dtype=bool) #[grayScale, flip, sharpFilter]
 
 cam = cv2.VideoCapture(0)
 
 img_counter = 0
-
-def iD(time):
-    return int(time.strftime("%m"))*10000000 + int(time.strftime("%d"))*100000 + int(time.strftime("%H")) * 1000 + int(time.strftime("%M")) * 10
-
-def timeStamp(time, img):
-    # ADD DATE 
-    # raw and f string
-    #font = cv2.FONT_HERSHEY_SIMPLEX
-    #org = (50, 50)
-    #fontScale = 0.75
-    #color = (255, 255, 255)
-    #thickness = 2 #line thickness of 2 px
-    return cv2.putText(img, f"{time}", (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 
-                    0.75, (255, 255, 255), 2, cv2.LINE_AA)
-
-def flip(img):
-    return cv2.flip(img, 0)
-
-def gScale(img):
-    return cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-
-def sharpF(img):
-    kernel = np.array([[-1, -1, -1], [-1, 9.5, -1], [-1, -1, -1]])
-    return cv2.filter2D(img, -1, kernel)
 
 print("Press \"i\" to input sequence or esc to exit.")
 # main loop
@@ -63,6 +86,7 @@ while True:
                 img_name = f"opencv_frame_{iD(time) + img_counter}.png"
                 print(img_name)
                 cv2.imwrite(img_name, frame)
+                # raw and format string
                 path = rf"C:\Users\nicol\programs\Rocketry\opencvCamLibTesting\{img_name}" #ADD YOUR PATH HERE
                 img = cv2.imread(path)
                 if lastState[0]: #grayscale
