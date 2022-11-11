@@ -76,7 +76,9 @@ while True:
         break
     elif key == 105: #"i"
         print(f"last state: {lastState}")
-        print("Key: clear - clear prev states | c - take pic | d - grayscale = ON | e - grayscale = OFF |\nf - flip 180 | g - sharp filter = ON | h - sharp filter = OFF")
+        print("Key: clear - clear prev states | c - take pic | d - grayscale = ON | "
+        "e - grayscale = OFF |\nf - flip 180 | g - sharp filter = ON | "
+        "h - sharp filter = OFF")
         input = input("Sequence: ")
         comm = input.split(" ")
         while len(comm) > 0:
@@ -96,7 +98,8 @@ while True:
                 if lastState[2]: #sharpened filter 
                     img = sharpF(img)
                 cv2.imwrite(img_name, timeStamp(time, img))
-                print(f"screenshot taken, state: gScal - {lastState[0]} | flip - {lastState[1]} | sharp - {lastState[2]}")
+                print(f"screenshot taken, state: gScal - {lastState[0]} | "
+                "flip - {lastState[1]} | sharp - {lastState[2]}")
                 img_counter += 1  
             elif next == "d":
                 lastState[0] = True 
