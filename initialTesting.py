@@ -17,13 +17,13 @@ def iD(time):
 def timeStamp(time, img):
     # ADD DATE 
     # raw and f string
-    font = cv2.FONT_HERSHEY_SIMPLEX
-    org = (50, 50)
-    fontScale = 0.75
-    color = (255, 255, 255)
-    thickness = 2 #line thickness of 2 px
-    return cv2.putText(img, f"{time}", org, font, 
-                    fontScale, color, thickness, cv2.LINE_AA)
+    #font = cv2.FONT_HERSHEY_SIMPLEX
+    #org = (50, 50)
+    #fontScale = 0.75
+    #color = (255, 255, 255)
+    #thickness = 2 #line thickness of 2 px
+    return cv2.putText(img, f"{time}", (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 
+                    0.75, (255, 255, 255), 2, cv2.LINE_AA)
 
 def flip(img):
     return cv2.flip(img, 0)
@@ -63,7 +63,7 @@ while True:
                 img_name = f"opencv_frame_{iD(time) + img_counter}.png"
                 print(img_name)
                 cv2.imwrite(img_name, frame)
-                path = rf"C:\Users\nicol\programs\{img_name}" #ADD YOUR PATH HERE
+                path = rf"C:\Users\nicol\programs\Rocketry\opencvCamLibTesting\{img_name}" #ADD YOUR PATH HERE
                 img = cv2.imread(path)
                 if lastState[0]: #grayscale
                     img = gScale(img)
