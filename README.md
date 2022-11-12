@@ -7,7 +7,8 @@ Test program to explore functionality of OpenCV library for possible future usag
 - You will have to toggle between screens to select input or exit in your camera screen, and to type input.
 - Make sure you update your path to be your current active directory where you are running the program (see comments in code).
 ## camTesting1.py
-- Run the program from the command line using ```py camMain.py <yourdirectory>\opencvCamLibTesting\camTesting1```
+- Run the program from the command line using 
+  ```py camMain.py <yourdirectory>\opencvCamLibTesting\camTesting1```
 - Example: ```py camMain.py C:\Users\bob\programs\opencvCamLibTesting\camTesting1```
 
 # Functionalities tested
