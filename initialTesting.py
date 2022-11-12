@@ -6,7 +6,6 @@ import datetime
 import numpy as np
 
 # FUNCTIONS --------------------------------------------------------------------|
-
 def iD(time : datetime) -> int:
     '''
     Returns ID for image naming purposes
