@@ -10,7 +10,7 @@ Test program to explore functionality of OpenCV library for possible future usag
 - Run the program from the command line using 
   ```py camMain.py <yourdirectory>\opencvCamLibTesting\camTesting1```
 - Example: ```py camMain.py C:\Users\bob\programs\opencvCamLibTesting\camTesting1```
-## camTesting - camMain2.py
+## camTesting1 - camMain2.py
 - This testing was done through ssh on a RaspberryPi Compute Module 4
 - Adjust your paths for current directory in the file
 - Use ```scp <filename> <username>@raspberrypi2:<directory>``` for all files
