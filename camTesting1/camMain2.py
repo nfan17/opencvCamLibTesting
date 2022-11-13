@@ -1,18 +1,16 @@
 # Main script to test cam module function
-# Takes current dir as path
-# py camMain.py C:\Users\nicol\programs\Rocketry\opencvCamLibTesting\camTesting1
+# Took out passing current dir as path because had issues getting raspberry pi to read path from arg
 
 from cam import cam
 import sys
 import numpy as np
 
-def main(path : str):
-    dir = rf"{path[1]}"
+def main():
+    #dir = rf"{path[1]}"
+    dir = "/home/pi/"
     camera = cam(dir)
-    print(camera)
-    with open(dir + r"\commands.txt") as file:
+    with open("/home/pi/commands.txt") as file:
         f = file.readlines()
-        print(f)
         seq = f[0].split(":")
         print(seq)
         comms = seq[1].split(" ")
@@ -43,4 +41,4 @@ def main(path : str):
 
 
 if __name__ == "__main__":
-    main(sys.argv)
+    main()
